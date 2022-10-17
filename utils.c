@@ -6,12 +6,12 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:18:21 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/17 16:45:53 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/17 18:26:49 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "libft/libft.h"
+#include "libftprintf/libft.h"
 
 void	error(char *errmsg)
 {
