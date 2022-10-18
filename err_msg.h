@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   so_long.h                                          :+:    :+:            */
+/*   err_msg.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/18 17:59:30 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/18 14:04:50 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/18 17:55:57 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef ERR_MSG_H
+# define ERR_MSG_H
 
-# include "libftprintf/libft.h"
-# include "err_msg.h"
-# include "errno.h"
-
-void	error(char *errmsg);
-int		check_ext(char *file);
-int		open_file(char *filepath);
+# define ERR_FILE		"Provide only a single mapfile: ./so_long <mapfile>"
+# define ERR_FILE_EXT	"map files must have the .ber file extention"
+# define ERR_FD			"Couldn't open file"
+# define ERR_INIT		"Initialization failed."
+# define ERR_MAP_INIT	"Map initialization failed."
+# define ERR_COORD_INIT	"Coord initialization failed."
 
 #endif

@@ -6,17 +6,22 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/17 15:34:41 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/18 17:59:27 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
+	int	fd;
+
+	errno = 0;
 	if (argc != 2)
-		error("wrong");
-	else
-		printf("%s\n", argv[1]);
+		error(ERR_FILE);
+	else if (check_ext(argv[1]) || ft_strlen(argv[1]) < 4)
+		error(ERR_FILE_EXT);
+	fd = open_file(argv[1]);
+	exit(EXIT_SUCCESS);
 }

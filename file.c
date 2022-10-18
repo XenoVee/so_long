@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   so_long.h                                          :+:    :+:            */
+/*   file.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/18 17:59:30 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/18 17:48:29 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/18 17:59:09 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
+#include <fcntl.h>
 
-# include "libftprintf/libft.h"
-# include "err_msg.h"
-# include "errno.h"
+int	open_file(char *filepath)
+{
+	int	fd;
 
-void	error(char *errmsg);
-int		check_ext(char *file);
-int		open_file(char *filepath);
-
-#endif
+	fd = open(filepath, O_RDONLY);
+	if (fd < 0)
+		error(ERR_FD);
+	return (fd);
+}
