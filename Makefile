@@ -6,13 +6,21 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/10/17 18:24:55 by rmaes         ########   odam.nl          #
+#    Updated: 2022/10/19 15:41:05 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES = *.c
-OBJECTS = $(SOURCES:.c=.o)
-HEADER = so_long.h
+
+SOURCES_DIR = sources/
+
+FILES =	check.c \
+		file.c \
+		parsing.c \
+		so_long.c \
+		utils.c \
+
+SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
+
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 LIBFT = ./libftprintf
@@ -30,18 +38,16 @@ $(TEST): $(SOURCES)
 	@$(CC) -g -o $@ $^
 
 $(NAME): $(SOURCES) $(LIBFT_NAME)
-	@$(CC) -o $@ $^
-
-%.o: %.c
-	@$(CC) -c $(CFLAGS) -o $@ $^
+	@echo $(SOURCES)
+	$(CC) -o $@ $^
 
 clean:
 	@echo "cleaning libft object files"
 	@make clean -C $(LIBFT)
-
-fclean: clean
 	@echo "removing so_long"
 	@rm -f $(NAME)
+
+fclean: clean
 	@echo "removing libft.a"
 	@make fclean -C $(LIBFT)
 
