@@ -1,5 +1,0 @@
-			sources/check.c \
-			sources/file.c \
-			sources/parsing.c \
-			sources/so_long.c \
-			sources/utils.c \
