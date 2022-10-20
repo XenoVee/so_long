@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/10/19 15:41:05 by rmaes         ########   odam.nl          #
+#    Updated: 2022/10/19 16:51:20 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ $(LIBFT_NAME):
 	@echo 'Making libft'
 	@make -C $(LIBFT)
 
-$(TEST): $(SOURCES)
+$(TEST): $(SOURCES) $(LIBFT_NAME)
 	@$(CC) -g -o $@ $^
 
 $(NAME): $(SOURCES) $(LIBFT_NAME)
