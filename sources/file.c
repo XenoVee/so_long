@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 17:48:29 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/20 17:33:30 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/20 20:46:42 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	read_compare_line(t_map *map, int strl[2], int i, int fd)
 	}
 	if (strl[(i + 1) % 2] != strl[i % 2] && i != 0)
 		error(ERR_MAP_RECT);
-	map->x = strl[i % 2];
+	map->y = strl[i % 2];
 	return (i + 1);
 }
 
@@ -50,6 +50,6 @@ void	open_file(char *filepath, t_map *map)
 		map->map = ft_realloc(map->map, sizeof(char *) * i + 1);
 		i = read_compare_line(map, strl, i, fd);
 	}
-	map->y = i - 1;
+	map->x = i - 1;
 	close(fd);
 }

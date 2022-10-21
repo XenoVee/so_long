@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:18:21 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/18 17:16:22 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/20 21:17:47 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,16 @@ void	error(char *errmsg)
 	else
 		perror(errmsg);
 	exit(EXIT_FAILURE);
+}
+
+void	init_array(void *array, size_t len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((int *)array)[i] = 0;
+		i++;
+	}
 }
