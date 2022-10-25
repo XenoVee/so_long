@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:18:21 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/20 21:17:47 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/25 19:11:18 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,21 @@ void	error(char *errmsg)
 	exit(EXIT_FAILURE);
 }
 
-void	init_array(void *array, size_t len)
+void	multi_error(char *errmsg, int *n)
 {
-	int	i;
+	if (*n == 0)
+		ft_putstr_fd("Error\n", 2);
+	if (errno == 0)
+		ft_putendl_fd(errmsg, 2);
+	else
+		perror(errmsg);
+	*n = *n + 1;
+}
 
-	i = 0;
-	while (i < len)
-	{
-		((int *)array)[i] = 0;
-		i++;
-	}
+void	null_err(t_err *err)
+{
+	err->players = 0;
+	err->exits = 0;
+	err->collect = 0;
+	err->closed = 0;
 }

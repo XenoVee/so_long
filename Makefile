@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/10/19 16:51:20 by rmaes         ########   odam.nl          #
+#    Updated: 2022/10/25 22:04:49 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FILES =	check.c \
 		parsing.c \
 		so_long.c \
 		utils.c \
+		solve_check.c \
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
@@ -45,7 +46,7 @@ clean:
 	@echo "cleaning libft object files"
 	@make clean -C $(LIBFT)
 	@echo "removing so_long"
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(TEST)
 
 fclean: clean
 	@echo "removing libft.a"

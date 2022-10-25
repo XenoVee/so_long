@@ -5,14 +5,15 @@
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/20 17:11:41 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/20 21:28:27 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/25 21:41:47 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/25 22:22:13 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+#include <stdlib.h>
 
-void	invalid_char_return(t_map *map, int x, int y)
+static t_list	*invalid_return(t_map *map, t_err *err, int x, int y)
 {
 	char	*ret;
 	int		errstrlen;
@@ -32,34 +33,24 @@ void	invalid_char_return(t_map *map, int x, int y)
 	ft_strlcat(ret, ", ", errstrlen + 12 + xdigit);
 	ft_strlcat(ret, ft_itoa(y), errstrlen + 12 + xdigit + ydigit);
 	ret[errstrlen + 11 + xdigit + ydigit] = ']';
-	error(ret);
+	return (ft_lstnew(ret));
 }
 
-void	count_required(int req[3], char c, int final)
+void	count_required(t_err *err, t_map *map, int ix, int iy)
 {
-	if (c == 'P')
+	if (map->map[ix][iy] == 'P')
 	{
-		if (req[0] >= 1)
-			error(ERR_MORE_PLAYERS);
-		req[0]++;
+		err->players++;
+		if (err->players == 1)
+		{
+			map->player[0] = ix;
+			map->player[1] = iy;
+		}
 	}
-	if (c == 'E')
-	{
-		if (req[1] >= 1)
-			error(ERR_MORE_EXITS);
-		req[1]++;
-	}
-	if (c == 'C')
-		req[2]++;
-	if (final == 1)
-	{
-		if (req[0] == 0)
-			error(ERR_NO_PLAYER);
-		if (req[0] == 0)
-			error(ERR_NO_EXIT);
-		if (req[0] == 0)
-			error(ERR_NO_COLLECT);
-	}
+	if (map->map[ix][iy] == 'E')
+		err->exits++;
+	if (map->map[ix][iy] == 'C')
+		err->collect++;
 }
 
 // void	count_collect(int collect)
@@ -67,54 +58,65 @@ void	count_required(int req[3], char c, int final)
 // req[0]: n players
 // req[1]: n exits
 // req[2]: n collectibles
-void	check_map(t_map *map)
+void	check_map(t_map *map, t_err *err)
 {
 	int	ix;
 	int	iy;
-	int	req[3];
 
 	ix = 0;
 	iy = 0;
-	init_array(req, 3);
+	err->list = ft_lstnew("skip");
 	while (map->map[ix])
 	{
 		while (map->map[ix][iy])
 		{
 			if (map->map[ix][iy] == 'P' || map->map[ix][iy] == 'E' ||
 				map->map[ix][iy] == 'C')
-				count_required(req, map->map[ix][iy], 0);
+				count_required(err, map, ix, iy);
 			if (char_valid(map->map[ix][iy], "01CPE") == 0)
-				invalid_char_return(map, ix, iy);
+				ft_lstadd_back(&err->list,
+					invalid_return(map, err, ix, iy));
 			if (ix == 0 || iy == 0 || ix == map->x - 1 || iy == map->y - 1)
 				if (map->map[ix][iy] != '1')
-					error(ERR_ENCLOSED);
+					err->closed++;
 			iy++;
 		}
 		iy = 0;
 		ix++;
 	}
-	count_required(req, '0', 1);
 }
 
-int	char_valid(char c, char *v_chars)
+void	error_list(t_err *err)
 {
-	int	i;
-	int	valid;
+	int	n;
 
-	i = 0;
-	valid = 0;
-	while (v_chars[i] && valid != 1)
+	n = 0;
+	if (err->closed != 0)
+		multi_error(ERR_ENCLOSED, &n);
+	if (err->players != 1)
+		multi_error(ERR_PLAYER, &n);
+	if (err->exits != 1)
+		multi_error(ERR_EXIT, &n);
+	if (err->collect < 1)
+		multi_error(ERR_NO_COLLECT, &n);
+	while (err->list->next)
 	{
-		if (c == v_chars[i])
-			valid = 1;
-		i++;
+		if (ft_strncmp(err->list->content, "skip", 4))
+			multi_error(err->list->content, &n);
+		err->list = err->list->next;
 	}
-	if (valid != 1)
-		return (0);
-	return (1);
+	if (ft_strncmp(err->list->content, "skip", 4))
+		multi_error(err->list->content, &n);
+	if (n != 0)
+		exit(EXIT_FAILURE);
 }
 
 void	parsing(t_map *map)
 {
-	check_map(map);
+	t_err	err;
+
+	null_err(&err);
+	check_map(map, &err);
+	error_list(&err);
+	solve_check(map, &err);
 }
