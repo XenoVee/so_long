@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/10/25 22:04:49 by rmaes         ########   odam.nl          #
+#    Updated: 2022/10/28 15:17:57 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ FILES =	check.c \
 		so_long.c \
 		utils.c \
 		solve_check.c \
+		images.c \
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
@@ -26,6 +27,8 @@ CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 LIBFT = ./libftprintf
 LIBFT_NAME = libftprintf/libft.a
+MLX_NAME = MLX42/libmlx42.a
+MLX_FLAGS = -I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 NAME = so_long
 TEST = test
 
@@ -35,12 +38,12 @@ $(LIBFT_NAME):
 	@echo 'Making libft'
 	@make -C $(LIBFT)
 
-$(TEST): $(SOURCES) $(LIBFT_NAME)
-	@$(CC) -g -o $@ $^
+$(TEST): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) 
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -o $@ $^ 
 
-$(NAME): $(SOURCES) $(LIBFT_NAME)
+$(NAME): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) 
 	@echo $(SOURCES)
-	$(CC) -o $@ $^
+	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $@ $^ 
 
 clean:
 	@echo "cleaning libft object files"

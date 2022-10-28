@@ -6,14 +6,14 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 21:41:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/25 22:22:13 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/26 19:00:09 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include <stdlib.h>
 
-static t_list	*invalid_return(t_map *map, t_err *err, int x, int y)
+static t_list	*invalid_return(t_map *map, int x, int y)
 {
 	char	*ret;
 	int		errstrlen;
@@ -60,8 +60,8 @@ void	count_required(t_err *err, t_map *map, int ix, int iy)
 // req[2]: n collectibles
 void	check_map(t_map *map, t_err *err)
 {
-	int	ix;
-	int	iy;
+	unsigned int	ix;
+	unsigned int	iy;
 
 	ix = 0;
 	iy = 0;
@@ -75,7 +75,7 @@ void	check_map(t_map *map, t_err *err)
 				count_required(err, map, ix, iy);
 			if (char_valid(map->map[ix][iy], "01CPE") == 0)
 				ft_lstadd_back(&err->list,
-					invalid_return(map, err, ix, iy));
+					invalid_return(map, ix, iy));
 			if (ix == 0 || iy == 0 || ix == map->x - 1 || iy == map->y - 1)
 				if (map->map[ix][iy] != '1')
 					err->closed++;

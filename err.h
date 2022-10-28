@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 14:04:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/25 21:22:53 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/26 19:09:58 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ typedef struct s_err
 # define ERR_PLAYER			"Map must have exactly one player"
 # define ERR_EXIT			"Map must have exactly one exit"
 # define ERR_NO_COLLECT		"Map has no collectibles"
-# define ERR_SOLVE			"Map is not solvable"
+# define ERR_SOLVE			"Map can't be solved:"
+# define ERR_SOLVE_EXIT		"Exit can't be reached"
+# define ERR_SOLVE_COLLECT	"Collectible can't be reached at: "
+# define ERR_MLX_INIT		"MLX initialization failed"
 #endif
