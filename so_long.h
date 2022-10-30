@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/28 17:09:32 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/30 22:07:12 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 
 typedef struct s_player
 {
-	mlx_image_t	*p_img;
-	int			*x;
-	int			*y;
+	mlx_image_t		*p_img;
+	int				*x;
+	int				*y;
+	mlx_texture_t	*p_text;
 }				t_player;
 
 typedef struct s_map
@@ -30,15 +31,24 @@ typedef struct s_map
 	unsigned int	x;
 	unsigned int	y;
 	char			**map;
-	unsigned int	player[2];
+	int				player[2];
 }				t_map;
 
 typedef struct s_world
 {
-	t_player		*plr;
-	mlx_t			*mlx;
 	mlx_image_t		*w_img;
+	mlx_texture_t	*w_text;
 }				t_world;
+
+typedef struct s_game
+{
+	int			wi;
+	int			hi;
+	mlx_t		*mlx;
+	t_world		*wld;
+	t_player	*plr;
+	t_map		*map;
+}				t_game;
 
 void	error(char *errmsg);
 void	multi_error(char *errmsg, int *n);
@@ -49,7 +59,13 @@ void	check_map(t_map *map, t_err *err);
 int		char_valid(char c, char *v_chars);
 void	null_err(t_err *err);
 void	solve_check(t_map *map, t_err *err);
-void	create_player(t_player *plr, t_world *wld);
+void	create_player(t_game *game);
 void	images(t_map *map);
+void	movement_hook(void *g);
+void	exit_hook(void *g);
+void	player_moveup(t_game *game);
+void	player_movedown(t_game *game);
+void	player_moveleft(t_game *game);
+void	player_moveright(t_game *game);
 
 #endif

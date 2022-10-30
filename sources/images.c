@@ -6,80 +6,77 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 15:12:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/28 22:41:11 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/10/30 21:38:21 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include "unistd.h"
 
-void	test(void *wld)
+void	create_player(t_game *game)
 {
-	t_player	*play;
-
-	play = ((t_world *)wld)->plr;
-	if (mlx_is_key_down(((t_world *)wld)->mlx, MLX_KEY_UP)
-		play->x = play->x + 2;
-	if (mlx_is_key_down(((t_world *)wld)->mlx, MLX_KEY_DOWN)
-		play->x = play->x - 2;
-	if (mlx_is_key_down(((t_world *)wld)->mlx, MLX_KEY_LEFT)
-		play->x = play->y - 2;
-	if (mlx_is_key_down(((t_world *)wld)->mlx, MLX_KEY_RIGHT)
-		play->y = play->y + 2;
+	game->plr->p_text = mlx_load_png
+		("/Users/rmaes/Projects/so_long/textures/brick.png");
+	game->plr->p_img = mlx_texture_to_image(game->mlx, game->plr->p_text);
+	mlx_image_to_window(game->mlx, game->plr->p_img,
+		game->map->player[1] * game->hi, game->map->player[0] * game->wi);
+	game->plr->x = &game->plr->p_img->instances->x;
+	game->plr->y = &game->plr->p_img->instances->y;
 }
 
-void	create_player(t_player *plr, t_world *wld)
+void	create_world_image(t_game *game)
 {
-	mlx_texture_t	*p_texture;
+	int		ix;
+	int		iy;
 
-	p_texture = mlx_load_png
-		("/Users/rmaes/Projects/so_long/textures/brick.png");
-	plr->p_img = mlx_texture_to_image(wld->mlx, p_texture);
-	plr->x = &plr->p_img->instances->x;
-	plr->y = &plr->p_img->instances->y;
-}
-
-void	create_world(t_world *wld, t_map *map, t_player *plr)
-{
-	int				ix;
-	int				iy;
-	mlx_texture_t	*w_texture;
-
-	w_texture = mlx_load_png
-		("/Users/rmaes/Projects/so_long/textures/brick.png");
-	wld->w_img = mlx_new_image(wld->mlx, map->y * 20, map->x * 20);
 	ix = 0;
-	wld->plr = plr;
-	while (map->map[ix])
+	while (game->map->map[ix])
 	{
 		iy = 0;
-		while (map->map[ix][iy])
+		while (game->map->map[ix][iy])
 		{
-			if (map->map[ix][iy] == '1')
-				mlx_draw_texture(wld->w_img, w_texture, iy * 20, ix * 20);
+			if (game->map->map[ix][iy] == '1')
+				mlx_draw_texture(game->wld->w_img, game->wld->w_text,
+					iy * game->hi, ix * game->wi);
 			iy++;
 		}
 		ix++;
 	}
-	write(1, "hey", 3);
+}
+
+void	create_world(t_game *game)
+{
+	t_world	*wld;
+	t_map	*map;
+
+	wld = game->wld;
+	map = game->map;
+	wld->w_text = mlx_load_png
+		("/Users/rmaes/Projects/so_long/textures/brick.png");
+	game->wi = wld->w_text->width;
+	game->hi = wld->w_text->height;
+	game->mlx = mlx_init(map->y * game->hi, map->x * game->wi,
+			"so_long", false);
+	if (!game->mlx)
+		error(ERR_MLX_INIT);
+	wld->w_img = mlx_new_image(game->mlx, map->y * game->hi, map->x * game->wi);
+	create_world_image(game);
+	mlx_image_to_window(game->mlx, wld->w_img, 0, 0);
 }
 
 void	images(t_map *map)
 {
 	t_player	plr;
 	t_world		wld;
+	t_game		game;
 
-	wld.mlx = mlx_init(map->y * 20, map->x * 20, "so_long", false);
-	if (!wld.mlx)
-		error(ERR_MLX_INIT);
-	write(1, "hey", 3);
-	create_world(&wld, map, &plr);
-	write(1, "hey", 3);
-	mlx_image_to_window(wld.mlx, wld.w_img, 0, 0);
-	create_player(&plr, &wld);
-	mlx_image_to_window(wld.mlx, plr.p_img,
-		map->player[1] * 20, map->player[0] * 20);
-	mlx_loop_hook(wld.mlx, &test, &wld);
-	mlx_loop(wld.mlx);
-	mlx_terminate(wld.mlx);
+	game.plr = &plr;
+	game.wld = &wld;
+	game.map = map;
+	create_world(&game);
+	create_player(&game);
+	mlx_loop_hook(game.mlx, &movement_hook, &game);
+	mlx_loop_hook(game.mlx, &exit_hook, &game);
+	mlx_loop(game.mlx);
+	mlx_terminate(game.mlx);
 }

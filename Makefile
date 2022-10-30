@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/10/28 15:17:57 by rmaes         ########   odam.nl          #
+#    Updated: 2022/10/30 21:50:11 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ FILES =	check.c \
 		utils.c \
 		solve_check.c \
 		images.c \
+		hooks.c \
+		player_move.c \
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
