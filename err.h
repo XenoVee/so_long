@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 14:04:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/26 19:09:58 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 20:51:51 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ typedef struct s_err
 # define ERR_SOLVE_EXIT		"Exit can't be reached"
 # define ERR_SOLVE_COLLECT	"Collectible can't be reached at: "
 # define ERR_MLX_INIT		"MLX initialization failed"
+# define ERR_SIDES			"Map sides must be at least 4 spaces long"
 #endif

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 15:12:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/30 21:38:21 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 17:08:02 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 void	create_player(t_game *game)
 {
 	game->plr->p_text = mlx_load_png
-		("/Users/rmaes/Projects/so_long/textures/brick.png");
+		("/Users/rmaes/Projects/so_long/textures/play.png");
 	game->plr->p_img = mlx_texture_to_image(game->mlx, game->plr->p_text);
 	mlx_image_to_window(game->mlx, game->plr->p_img,
-		game->map->player[1] * game->hi, game->map->player[0] * game->wi);
+		game->map->player[1] * game->wi, game->map->player[0] * game->hi);
 	game->plr->x = &game->plr->p_img->instances->x;
 	game->plr->y = &game->plr->p_img->instances->y;
 }
@@ -37,7 +37,7 @@ void	create_world_image(t_game *game)
 		{
 			if (game->map->map[ix][iy] == '1')
 				mlx_draw_texture(game->wld->w_img, game->wld->w_text,
-					iy * game->hi, ix * game->wi);
+					iy * game->wi, ix * game->hi);
 			iy++;
 		}
 		ix++;
@@ -55,11 +55,11 @@ void	create_world(t_game *game)
 		("/Users/rmaes/Projects/so_long/textures/brick.png");
 	game->wi = wld->w_text->width;
 	game->hi = wld->w_text->height;
-	game->mlx = mlx_init(map->y * game->hi, map->x * game->wi,
+	game->mlx = mlx_init(map->y * game->wi, map->x * game->hi,
 			"so_long", false);
 	if (!game->mlx)
 		error(ERR_MLX_INIT);
-	wld->w_img = mlx_new_image(game->mlx, map->y * game->hi, map->x * game->wi);
+	wld->w_img = mlx_new_image(game->mlx, game->mlx->width, game->mlx->height);
 	create_world_image(game);
 	mlx_image_to_window(game->mlx, wld->w_img, 0, 0);
 }
