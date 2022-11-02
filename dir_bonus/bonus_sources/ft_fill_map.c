@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:43:42 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 21:17:20 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 22:32:41 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,25 @@ void	ft_outer_walls(t_params *prms)
 	}
 }
 
+void	put_player(t_params *prms)
+{
+	int	x;
+	int	y;
+
+	while (1)
+	{
+		x = 1 + rand() % (prms->x - 2);
+		y = 1 + rand() % (prms->y - 2);
+		if (prms->map[x][y] == '0')
+		{
+			prms->map[x][y] = 'P';
+			prms->player[0] = x;
+			prms->player[1] = y;
+			return ;
+		}
+	}
+}
+
 void	ft_fill_map(t_params *prms)
 {	
 	ft_outer_walls(prms);
@@ -65,6 +84,6 @@ void	ft_fill_map(t_params *prms)
 		ft_rocks(prms, 1 + rand() % (prms->size / 4));
 	ft_cleanup(prms);
 	ft_collectibles(prms, 1 + rand() % ((ft_max(prms->size, 5) + 1) / 5));
-	put_thing(prms, 'P');
+	put_player(prms);
 	put_thing(prms, 'E');
 }

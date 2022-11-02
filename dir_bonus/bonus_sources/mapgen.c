@@ -6,21 +6,25 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 18:04:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 21:53:14 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 22:33:35 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mapgen.h"
 
-char	**mapgen(int argc, char **argv)
+void	mapgen(int argc, char **argv, t_map *map)
 {
 	t_params	prms;
 
 	ft_setup_params(argc, argv, &prms);
 	prms.map = ft_create_map(&prms);
 	if (prms.map == NULL)
-		return (0);
+		error(ERR_CREATE_MAP);
 	ft_fill_map(&prms);
 	ft_print_map(&prms);
-	return (prms.map);
+	map->map = prms.map;
+	map->x = prms.x;
+	map->y = prms.y;
+	map->player[0] = prms.player[0];
+	map->player[1] = prms.player[1];
 }

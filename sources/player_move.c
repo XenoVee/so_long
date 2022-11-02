@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 21:41:00 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 17:57:10 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 22:29:18 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	player_moveleft(t_game *game)
 		/ game->wld->w_text->height;
 	while (y[0] <= y[1])
 	{
-		ft_printf("[%i, %i] to [%i, %i]\n", x, y[0], x, y[1]);
 		if (game->map->map[y[0]][x] == '1')
 			return ;
 		y[0]++;
@@ -80,7 +79,6 @@ void	player_moveright(t_game *game)
 		/ game->wld->w_text->height;
 	while (y[0] <= y[1])
 	{
-		ft_printf("[%i, %i] to [%i, %i]\n", x, y[0], x, y[1]);
 		if (game->map->map[y[0]][x] == '1')
 			return ;
 		y[0]++;

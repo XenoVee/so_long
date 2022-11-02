@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 21:51:45 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 22:31:02 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_params
 	unsigned long	seed;
 	unsigned int	x;
 	unsigned int	y;
+	unsigned int	player[2];
 	unsigned int	size;
 	char			**map;
 }				t_params;

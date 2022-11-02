@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 21:52:31 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 22:25:56 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void	player_moveup(t_game *game);
 void	player_movedown(t_game *game);
 void	player_moveleft(t_game *game);
 void	player_moveright(t_game *game);
-char	**mapgen(int argc, char **argv);
+void	mapgen(int argc, char **argv, t_map *map);
 
 #endif
