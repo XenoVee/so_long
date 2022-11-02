@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/11/02 21:56:44 by rmaes         ########   odam.nl          #
+#    Updated: 2022/11/02 21:58:50 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,20 +68,20 @@ $(LIBFT_NAME):
 	@make -C $(LIBFT)
 
 $(TEST): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) $(SOURCE_MAIN)
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -o $@ $^ 
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -o $@ $^
 
 $(BONUS): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) $(SOURCE_BONUS_MAIN) $(BONUS_SOURCES)
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) -o $@ $^ 
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -o $@ $^
 
 $(NAME): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) $(SOURCE_MAIN)
 	@echo $(SOURCES)
-	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $@ $^ 
+	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $@ $^
 
 clean:
 	@echo "cleaning libft object files"
 	@make clean -C $(LIBFT)
 	@echo "removing so_long"
-	@rm -f $(NAME) $(TEST)
+	@rm -f $(NAME) $(TEST) $(BONUS)
 
 fclean: clean
 	@echo "removing libft.a"
