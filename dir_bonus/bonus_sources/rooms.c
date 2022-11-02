@@ -6,11 +6,11 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/27 22:33:38 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 20:35:12 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 21:50:10 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../mapgen.h"
+#include "../mapgen.h"
 
 // room[][] syntax: room[coords 0/ coords 1][x/ y]
 // with coord 0 being the top left and coord 1 being the bottom right corner

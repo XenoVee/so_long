@@ -6,11 +6,11 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 17:46:54 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/13 14:25:32 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 21:50:16 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../mapgen.h"
+#include "../mapgen.h"
 
 static int	check_wall_2(unsigned int sta[2], unsigned int end[2],
 							t_params *prms, int w)

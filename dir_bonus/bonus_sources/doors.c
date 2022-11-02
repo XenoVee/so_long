@@ -6,11 +6,11 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/28 16:33:51 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/13 19:17:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 21:50:35 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../mapgen.h"
+#include "../mapgen.h"
 
 static void	ft_generate_door(unsigned int door[2], unsigned int room[2][2]
 	, unsigned int width, unsigned int height)
@@ -40,8 +40,7 @@ static void	ft_generate_door(unsigned int door[2], unsigned int room[2][2]
 	}
 }
 
-static int	ft_door_valid(t_params *prms, unsigned int room[2][2],
-	unsigned int door[2])
+static int	ft_door_valid(t_params *prms, unsigned int door[2])
 {
 	int	t;
 
@@ -60,8 +59,7 @@ static int	ft_door_valid(t_params *prms, unsigned int room[2][2],
 	return (0);
 }
 
-static void	ft_put_door(t_params *prms, unsigned int room[2][2],
-	unsigned int door[2])
+static void	ft_put_door(t_params *prms, unsigned int door[2])
 {
 	int	i;
 
@@ -80,7 +78,6 @@ static void	ft_put_door(t_params *prms, unsigned int room[2][2],
 void	ft_draw_door(t_params *prms, unsigned int room[2][2])
 {
 	unsigned int	door[2];
-	unsigned int	loc;
 	unsigned int	width;
 	unsigned int	height;
 
@@ -89,9 +86,9 @@ void	ft_draw_door(t_params *prms, unsigned int room[2][2])
 	while (width != 0)
 	{
 		ft_generate_door(door, room, width, height);
-		if (ft_door_valid(prms, room, door) == 1)
+		if (ft_door_valid(prms, door) == 1)
 		{
-			ft_put_door(prms, room, door);
+			ft_put_door(prms, door);
 			width = 0;
 		}
 	}

@@ -6,11 +6,11 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/22 18:53:04 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/14 17:02:01 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 21:50:14 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../mapgen.h"
+#include "../mapgen.h"
 
 static int	ft_draw_walls(t_params *prms, unsigned int room[2][2],
 	unsigned int ix, unsigned int iy)

@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   so_long_mapgen.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/19 18:04:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 21:18:08 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/17 15:15:19 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/11/02 21:50:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mapgen.h"
+#include "../../so_long.h"
+#include <stdlib.h>
 
-int	mapgen(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_params	prms;
+	t_map			map;
 
-	ft_setup_params(argc, argv, &prms);
-	prms.map = ft_create_map(&prms);
-	if (prms.map == NULL)
-		return (0);
-	ft_fill_map(&prms);
-	ft_print_map(&prms);
-	free_map(&prms, prms.x);
+	errno = 0;
+	if (argc == 2)
+	{
+		if (check_ext(argv[1]) || ft_strlen(argv[1]) < 4)
+			error(ERR_FILE_EXT);
+		open_file(argv[1], &map);
+		parsing(&map);
+	}
+	else
+		map.map = mapgen(argc, argv);
+	images(&map);
+	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/19 19:26:14 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/03 18:05:12 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 21:28:41 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	ft_setempty(char *mapx, int y)
 
 char	**ft_create_map(t_params *prms)
 {
-	char	**map;
-	int		i;
+	char				**map;
+	unsigned int		i;
 
 	i = 0;
 	map = malloc((prms->x + 1) * sizeof(char *));

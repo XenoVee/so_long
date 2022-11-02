@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_print_map.c                                     :+:    :+:            */
+/*   draw_rock.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/19 19:43:42 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 21:16:13 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/14 15:47:45 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/11/02 21:50:31 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mapgen.h"
 
-void	ft_print_map(t_params *prms)
+void	draw_rock(t_params *prms, unsigned int rock[2])
 {
-	int	x;
-	int	y;
+	int	ix;
+	int	iy;
+	int	m;
 
-	y = 0;
-	x = 0;
-	while (prms->map[x][y] != 0)
+	ix = -1;
+	iy = -1;
+	m = 2;
+	prms->map[rock[0]][rock[1]] = '1';
+	while (ix <= 1)
 	{
-		while (prms->map[x])
+		while (iy <= 1)
 		{
-			if (prms->map[x][y] != '0')
-				write(1, &prms->map[x][y], 1);
-			else
-				write(1, " ", 1);
-			x++;
+			if (((ix == 0 || iy == 0) && rand() % m == 1))
+			{
+				prms->map[rock[0] + ix][rock[1] + iy] = 'R';
+				m += 2;
+			}
+			iy++;
 		}
-		write(1, "\n", 1);
-		x = 0;
-		y++;
+		iy = -1;
+		ix++;
 	}
+	ft_finalize(prms, 'R', '1');
 }

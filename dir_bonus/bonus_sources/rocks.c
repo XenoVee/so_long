@@ -6,11 +6,11 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 19:24:05 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 20:25:23 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 21:50:20 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../mapgen.h"
+#include "../mapgen.h"
 
 void	set_limits(int *limx, int *limy, int *ix, int *iy)
 {
@@ -67,7 +67,6 @@ int	generock(t_params *prms, unsigned int rock[2])
 void	ft_rocks(t_params *prms, unsigned int nrocks)
 {
 	unsigned int	rock[2];
-	unsigned int	l;
 
 	while (nrocks)
 	{

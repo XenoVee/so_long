@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 19:57:57 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 21:12:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/02 21:51:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include "../libftprintf/libft.h"
 # include "../so_long.h"
+// # include <stddef.h>
 
 typedef struct s_params
 {
@@ -48,4 +49,5 @@ void	ft_finalize(t_params *prms, char c, char f);
 void	ft_collectibles(t_params *prms, unsigned int ncoll);
 void	ft_player_exit(t_params *prms);
 void	put_thing(t_params *prms, char c);
+
 #endif
