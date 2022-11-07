@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 22:25:56 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/07 16:57:27 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_map
 	unsigned int	y;
 	char			**map;
 	int				player[2];
+	int				exit[2];
+	int				ncollect;
+	int				**collect;
 }				t_map;
 
 typedef struct s_world
@@ -39,6 +42,18 @@ typedef struct s_world
 	mlx_image_t		*w_img;
 	mlx_texture_t	*w_text;
 }				t_world;
+
+typedef struct s_exit
+{
+	mlx_image_t		*e_img;
+	mlx_texture_t	*e_text;
+}				t_exit;
+
+typedef struct s_collect
+{
+	mlx_image_t		*c_img;
+	mlx_texture_t	*c_text;
+}				t_collect;
 
 typedef struct s_game
 {
@@ -48,6 +63,8 @@ typedef struct s_game
 	t_world		*wld;
 	t_player	*plr;
 	t_map		*map;
+	t_exit		*exit;
+	t_collect	*collect;
 }				t_game;
 
 void	error(char *errmsg);
@@ -63,10 +80,11 @@ void	create_player(t_game *game);
 void	images(t_map *map);
 void	movement_hook(void *g);
 void	exit_hook(void *g);
-void	player_moveup(t_game *game);
-void	player_movedown(t_game *game);
-void	player_moveleft(t_game *game);
-void	player_moveright(t_game *game);
+void	player_moveup(t_game *game, int s);
+void	player_movedown(t_game *game, int s);
+void	player_moveleft(t_game *game, int s);
+void	player_moveright(t_game *game, int s);
 void	mapgen(int argc, char **argv, t_map *map);
+void	create_collectibles(t_game *game);
 
 #endif

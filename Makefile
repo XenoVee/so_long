@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/11/02 21:58:50 by rmaes         ########   odam.nl          #
+#    Updated: 2022/11/04 11:40:32 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ FILES =			check.c \
 				images.c \
 				hooks.c \
 				player_move.c \
+				collectibles.c \
 
 BONUS_FILES =	collectibles.c \
 				doors.c \
@@ -68,7 +69,7 @@ $(LIBFT_NAME):
 	@make -C $(LIBFT)
 
 $(TEST): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) $(SOURCE_MAIN)
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -o $@ $^
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -fsanitize=address -o $@ $^
 
 $(BONUS): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) $(SOURCE_BONUS_MAIN) $(BONUS_SOURCES)
 	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -o $@ $^
@@ -89,4 +90,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test

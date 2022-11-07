@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 22:26:16 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/03 15:57:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	main(int argc, char **argv)
 		if (check_ext(argv[1]) || ft_strlen(argv[1]) < 4)
 			error(ERR_FILE_EXT);
 		open_file(argv[1], &map);
-		parsing(&map);
 	}
 	else
 		mapgen(argc, argv, &map);
+	parsing(&map);
 	images(&map);
 	exit(EXIT_SUCCESS);
 }

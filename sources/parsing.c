@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 21:41:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/26 19:00:09 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/07 16:42:37 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,18 @@ void	count_required(t_err *err, t_map *map, int ix, int iy)
 		}
 	}
 	if (map->map[ix][iy] == 'E')
+	{
 		err->exits++;
+		map->exit[0] = ix;
+		map->exit[1] = iy;
+	}
 	if (map->map[ix][iy] == 'C')
+	{
 		err->collect++;
+		map->ncollect = err->collect;
+	}
 }
 
-// void	count_collect(int collect)
-
-// req[0]: n players
-// req[1]: n exits
-// req[2]: n collectibles
 void	check_map(t_map *map, t_err *err)
 {
 	unsigned int	ix;

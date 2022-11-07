@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 17:48:29 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/20 20:46:42 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/07 16:40:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	open_file(char *filepath, t_map *map)
 	i = read_compare_line(map, strl, i, fd);
 	while (map->map[i - 1] != NULL)
 	{
-		map->map = ft_realloc(map->map, sizeof(char *) * i + 1);
+		map->map = ft_realloc(map->map, sizeof(char *) * (i + 1));
 		i = read_compare_line(map, strl, i, fd);
 	}
 	map->x = i - 1;
