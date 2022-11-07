@@ -4,3 +4,4 @@ so_long
 test
 *.dSYM
 *.tmp
+.DS_Store
