@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 15:12:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/07 18:39:16 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/08 17:11:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	images(t_map *map)
 	game.plr = &plr;
 	game.wld = &wld;
 	game.map = map;
+	// ft_printf("smap x, smap y %i, %i\n", game.map->x, game.map->y);
 	create_world(&game);
 	create_collectibles(&game);
 	create_exit(&game);

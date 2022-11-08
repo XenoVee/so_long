@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 18:39:23 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/08 15:38:23 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/08 16:00:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	put_grass(t_game *game, int x, int y)
 void	put_wall(t_game *game, int x, int y, char **map)
 {
 	if (map[x][y] == '1')
-		mlx_draw_texture(game->wld->w_img, game->wld->wall_text,
+		mlx_draw_texture(game->wld->w_img, game->wld->w_text[corner_2],
 			y * game->wi, x * game->hi);
 }
 
@@ -62,28 +62,27 @@ void	create_world_image(t_game *game)
 
 void	load_textures(t_game *game)
 {
-	enum e_wall_sprites;
 	game->wld->g_text[0] = mlx_load_png("textures/grass/grass0.png");
 	game->wld->g_text[1] = mlx_load_png("textures/grass/grass1.png");
 	game->wld->g_text[2] = mlx_load_png("textures/grass/grass2.png");
 	game->wld->g_text[3] = mlx_load_png("textures/grass/grass3.png");
 	game->wld->g_text[4] = mlx_load_png("textures/grass/grass4.png");
-	game->wld->w_text[center] = mlx_load_png("textures/walls/wall_center.png");
-	game->wld->w_text[pillar] = mlx_load_png("textures/walls/wall_pillar.png");
-	game->wld->w_text[corner_1] = mlx_load_png("textures/walls/wall_corner_1.png");
-	game->wld->w_text[corner_2] = mlx_load_png("textures/walls/");
-	game->wld->w_text[corner_3] = mlx_load_png("textures/walls/");
-	game->wld->w_text[corner_4] = mlx_load_png("textures/walls/");
-	game->wld->w_text[end_up] = mlx_load_png("textures/walls/");
-	game->wld->w_text[end_left] = mlx_load_png("textures/walls/");
-	game->wld->w_text[end_down] = mlx_load_png("textures/walls/");
-	game->wld->w_text[end_right] = mlx_load_png("textures/walls/");
-	game->wld->w_text[horizontal] = mlx_load_png("textures/walls/");
-	game->wld->w_text[vertical] = mlx_load_png("textures/walls/");
-	game->wld->w_text[t_up] = mlx_load_png("textures/walls/");
-	game->wld->w_text[t_left] = mlx_load_png("textures/walls/");
-	game->wld->w_text[t_down] = mlx_load_png("textures/walls/");
-	game->wld->w_text[t_right] = mlx_load_png("textures/walls/");
+	game->wld->w_text[center] = mlx_load_png("textures/walls/center.png");
+	game->wld->w_text[pillar] = mlx_load_png("textures/walls/pillar.png");
+	game->wld->w_text[corner_1] = mlx_load_png("textures/walls/corner_1.png");
+	game->wld->w_text[corner_2] = mlx_load_png("textures/walls/corner_2.png");
+	game->wld->w_text[corner_3] = mlx_load_png("textures/walls/corner_3.png");
+	game->wld->w_text[corner_4] = mlx_load_png("textures/walls/corner_4.png");
+	game->wld->w_text[end_up] = mlx_load_png("textures/walls/end_up.png");
+	game->wld->w_text[end_left] = mlx_load_png("textures/walls/end_left.png");
+	game->wld->w_text[end_down] = mlx_load_png("textures/walls/end_down.png");
+	game->wld->w_text[end_right] = mlx_load_png("textures/walls/end_right.png");
+	game->wld->w_text[horizontal] = mlx_load_png("textures/walls/flat.png");
+	game->wld->w_text[vertical] = mlx_load_png("textures/walls/up.png");
+	game->wld->w_text[t_up] = mlx_load_png("textures/walls/t_up.png");
+	game->wld->w_text[t_left] = mlx_load_png("textures/walls/t_left.png");
+	game->wld->w_text[t_down] = mlx_load_png("textures/walls/t_down.png");
+	game->wld->w_text[t_right] = mlx_load_png("textures/walls/t_right.png");
 }
 
 void	create_world(t_game *game)
@@ -94,8 +93,8 @@ void	create_world(t_game *game)
 	wld = game->wld;
 	map = game->map;
 	load_textures(game);
-	game->wi = wld->wall_text->width;
-	game->hi = wld->wall_text->height;
+	game->wi = wld->w_text[pillar]->width;
+	game->hi = wld->w_text[pillar]->height;
 	game->mlx = mlx_init(map->y * game->wi, map->x * game->hi,
 			"so_long", false);
 	if (!game->mlx)
