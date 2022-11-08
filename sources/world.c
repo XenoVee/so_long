@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 18:39:23 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/07 21:42:18 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/08 15:38:23 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,28 @@ void	create_world_image(t_game *game)
 
 void	load_textures(t_game *game)
 {
+	enum e_wall_sprites;
 	game->wld->g_text[0] = mlx_load_png("textures/grass/grass0.png");
 	game->wld->g_text[1] = mlx_load_png("textures/grass/grass1.png");
 	game->wld->g_text[2] = mlx_load_png("textures/grass/grass2.png");
 	game->wld->g_text[3] = mlx_load_png("textures/grass/grass3.png");
 	game->wld->g_text[4] = mlx_load_png("textures/grass/grass4.png");
-	game->wld->w_text[0] = mlx_load_png("textures/walls/");
-	game->wld->w_text[1] = mlx_load_png("textures/walls/");
-	game->wld->w_text[2] = mlx_load_png("textures/walls/");
-	game->wld->w_text[3] = mlx_load_png("textures/walls/");
-	game->wld->w_text[4] = mlx_load_png("textures/walls/");
-	game->wld->w_text[5] = mlx_load_png("textures/walls/");
-	game->wld->w_text[6] = mlx_load_png("textures/walls/");
+	game->wld->w_text[center] = mlx_load_png("textures/walls/wall_center.png");
+	game->wld->w_text[pillar] = mlx_load_png("textures/walls/wall_pillar.png");
+	game->wld->w_text[corner_1] = mlx_load_png("textures/walls/wall_corner_1.png");
+	game->wld->w_text[corner_2] = mlx_load_png("textures/walls/");
+	game->wld->w_text[corner_3] = mlx_load_png("textures/walls/");
+	game->wld->w_text[corner_4] = mlx_load_png("textures/walls/");
+	game->wld->w_text[end_up] = mlx_load_png("textures/walls/");
+	game->wld->w_text[end_left] = mlx_load_png("textures/walls/");
+	game->wld->w_text[end_down] = mlx_load_png("textures/walls/");
+	game->wld->w_text[end_right] = mlx_load_png("textures/walls/");
+	game->wld->w_text[horizontal] = mlx_load_png("textures/walls/");
+	game->wld->w_text[vertical] = mlx_load_png("textures/walls/");
+	game->wld->w_text[t_up] = mlx_load_png("textures/walls/");
+	game->wld->w_text[t_left] = mlx_load_png("textures/walls/");
+	game->wld->w_text[t_down] = mlx_load_png("textures/walls/");
+	game->wld->w_text[t_right] = mlx_load_png("textures/walls/");
 }
 
 void	create_world(t_game *game)
