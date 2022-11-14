@@ -6,14 +6,14 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 14:04:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/09 16:28:43 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/14 14:34:19 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERR_MSG_H
 # define ERR_MSG_H
 
-#include "so_long.h"
+#include "../so_long.h"
 
 typedef struct s_err
 {

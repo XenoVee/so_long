@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/14 14:20:42 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/14 18:27:54 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	solve_check(t_map *map, t_err *err);
 void	create_player(t_game *game);
 void	create_world(t_game *game);
 void	images(t_map *map);
-void	movement_hook(void *g);
 void	exit_hook(void *g);
+void	move_hook(void *g);
 void	player_moveup(t_game *game, int s);
 void	player_movedown(t_game *game, int s);
 void	player_moveleft(t_game *game, int s);
@@ -43,5 +43,7 @@ void	create_collectibles(t_game *game);
 void	read_buf(int fd, char *buf, int nbyte);
 void	shift_buf(char *buf);
 void	put_wall(t_game *game, int x, int y);
+void	atlas_player(t_game *game, int dir, int sprite);
+void	create_player(t_game *game);
 
 #endif

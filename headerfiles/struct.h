@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 18:04:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/14 14:21:23 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/14 17:28:16 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,25 @@
 # define STRUCT_H
 
 # include "../so_long.h"
+# include "t_player.h"
+
+enum e_xy
+{
+	x = 0,
+	y,
+};
+
+// enum e_vertical
+// {
+// 	up = 1,
+// 	down = -1,
+// };
+
+// enum e_horizontal
+// {
+// 	left = -1,
+// 	down = +1,
+// };
 
 typedef struct s_map
 {
