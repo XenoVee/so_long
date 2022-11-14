@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 21:41:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/07 16:42:37 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/09 15:03:49 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	count_required(t_err *err, t_map *map, int ix, int iy)
 
 void	check_map(t_map *map, t_err *err)
 {
-	unsigned int	ix;
-	unsigned int	iy;
+	int	ix;
+	int	iy;
 
 	ix = 0;
 	iy = 0;

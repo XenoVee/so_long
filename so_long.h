@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/07 18:40:18 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/14 14:20:42 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define SO_LONG_H
 
 # include "libftprintf/libft.h"
-# include "err.h"
+# include "headerfiles/err.h"
 # include "errno.h"
 # include "MLX42/include/MLX42/MLX42.h"
-# include "struct.h"
+# include "headerfiles/struct.h"
+# include "headerfiles/t_player.h"
 
 void	error(char *errmsg);
 void	multi_error(char *errmsg, int *n);
@@ -39,5 +40,8 @@ void	player_moveleft(t_game *game, int s);
 void	player_moveright(t_game *game, int s);
 void	mapgen(int argc, char **argv, t_map *map);
 void	create_collectibles(t_game *game);
+void	read_buf(int fd, char *buf, int nbyte);
+void	shift_buf(char *buf);
+void	put_wall(t_game *game, int x, int y);
 
 #endif

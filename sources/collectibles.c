@@ -6,20 +6,20 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 21:00:30 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/07 16:45:40 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/09 14:58:11 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	create_collectibles(t_game *game)
-{
-	t_collect	*collect;
-	int			i;
+// void	create_collectibles(t_game *game)
+// {
+// 	t_collect	*collect;
+// 	int			i;
 
-	i = 0;
-	collect = game->collect;
-}
+// 	i = 0;
+// 	collect = game->collect;
+// }
 // {
 // 	t_collect	*collect;
 // 	int			i;

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 14:04:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/02 22:27:13 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/09 16:28:43 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ typedef struct s_err
 # define ERR_MLX_INIT		"MLX initialization failed"
 # define ERR_SIDES			"Map sides must be at least 4 spaces long"
 # define ERR_CREATE_MAP		"Failed to create map"
+# define ERR_READ_RAND		"Failed to read /dev/random"
 #endif

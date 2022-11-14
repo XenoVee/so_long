@@ -6,33 +6,34 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 18:04:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/08 15:45:04 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/14 14:21:23 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# include "so_long.h"
-
-typedef struct s_player
-{
-	mlx_image_t		*p_img;
-	int				*x;
-	int				*y;
-	mlx_texture_t	*p_text;
-}				t_player;
+# include "../so_long.h"
 
 typedef struct s_map
 {
-	unsigned int	x;
-	unsigned int	y;
-	char			**map;
-	int				player[2];
-	int				exit[2];
-	int				ncollect;
-	int				**collect;
+	int		x;
+	int		y;
+	char	**map;
+	int		player[2];
+	int		exit[2];
+	int		ncollect;
+	int		**collect;
 }				t_map;
+
+enum e_sides
+{
+	north = 0,
+	east,
+	south,
+	west,
+	total,
+};
 
 enum e_wall_sprites
 {
@@ -78,11 +79,11 @@ typedef struct s_game
 	int			wi;
 	int			hi;
 	mlx_t		*mlx;
-	t_world		*wld;
-	t_player	*plr;
+	t_world		wld;
+	t_player	plr;
 	t_map		*map;
-	t_exit		*exit;
-	t_collect	*collect;
+	t_exit		exit;
+	t_collect	collect;
 }				t_game;
 
 #endif

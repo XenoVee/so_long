@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 20:55:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/07 18:34:54 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/14 13:14:46 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	movement_hook(void *g)
 	t_game		*game;
 	int			speed;
 
-	speed = 2;
 	game = (t_game *)g;
+	speed = 2;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT))
+		speed *= speed;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_UP))
 		player_moveup(game, speed);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
