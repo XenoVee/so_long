@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 21:41:00 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/09 17:00:32 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/15 19:24:58 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	player_moveup(t_game *game, int s)
 		while (x[0] <= x[1])
 		{
 			if (game->map->map[y][x[0]] == '1')
+			{
+				game->plr.speed_y = 0;
 				return ;
+			}
 			x[0]++;
 		}
 		*game->plr.y = *game->plr.y - 1;
@@ -48,7 +51,10 @@ void	player_moveleft(t_game *game, int s)
 		while (y[0] <= y[1])
 		{
 			if (game->map->map[y[0]][x] == '1')
+			{
+				game->plr.speed_x = 0;
 				return ;
+			}
 			y[0]++;
 		}
 		*game->plr.x = *game->plr.x - 1;
@@ -71,7 +77,10 @@ void	player_movedown(t_game *game, int s)
 		while (x[0] <= x[1])
 		{
 			if (game->map->map[y][x[0]] == '1')
+			{
+				game->plr.speed_y = 0;
 				return ;
+			}
 			x[0]++;
 		}
 		*game->plr.y = *game->plr.y + 1;
@@ -94,7 +103,10 @@ void	player_moveright(t_game *game, int s)
 		while (y[0] <= y[1])
 		{
 			if (game->map->map[y[0]][x] == '1')
+			{
+				game->plr.speed_x = 0;
 				return ;
+			}
 			y[0]++;
 		}
 		*game->plr.x = *game->plr.x + 1;

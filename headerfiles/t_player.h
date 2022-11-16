@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 14:17:54 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/14 18:24:14 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/15 19:47:38 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,27 @@
 enum e_spritesets
 {
 	down = 0,
-	down_left,
+	down_l,
 	left,
-	up_left,
+	up_l,
 	up,
-	up_right,
+	up_r,
 	right,
-	down_right,
+	down_r,
 };
 
 enum e_sprites
 {
-	move_1 = 0,
-	idle,
+	stand = 0,
+	move_1,
+	stand_2,
 	move_2,
 };
 
 typedef struct s_player
 {
 	mlx_image_t		*p_img;
-	mlx_texture_t	*p_text;
+	mlx_texture_t	*p_text[8][4];
 	int				*x;
 	int				*y;
 	int				speed_x;
