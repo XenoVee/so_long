@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/11/14 18:34:00 by rmaes         ########   odam.nl          #
+#    Updated: 2022/11/16 21:26:28 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ FILES =			check.c \
 				collectibles.c \
 				world.c \
 				put_wall.c \
-				player.c
+				player.c \
+				collision.c \
 
 BONUS_FILES =	collectibles.c \
 				doors.c \

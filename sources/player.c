@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 18:27:31 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/15 19:18:14 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/16 21:32:24 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,33 @@ void	create_player(t_game *game)
 	game->plr.y = &game->plr.p_img->instances->y;
 	game->plr.speed_x = 0;
 	game->plr.speed_y = 0;
+}
+
+void	player_anim(t_player *plr, mlx_t *mlx, int dir_x, int dir_y)
+{
+	static int	frame = 0;
+	int			fpause;
+
+	fpause = 10;
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT_SHIFT))
+		fpause = 6;
+	if (dir_x == 1 && dir_y == 0)
+		mlx_draw_texture(plr->p_img, plr->p_text[right][frame / fpause], 0, 0);
+	if (dir_x == -1 && dir_y == 0)
+		mlx_draw_texture(plr->p_img, plr->p_text[left][frame / fpause], 0, 0);
+	if (dir_x == 0 && dir_y == -1)
+		mlx_draw_texture(plr->p_img, plr->p_text[up][frame / fpause], 0, 0);
+	if (dir_x == 0 && dir_y == 1)
+		mlx_draw_texture(plr->p_img, plr->p_text[down][frame / fpause], 0, 0);
+	if (dir_x == 1 && dir_y == -1)
+		mlx_draw_texture(plr->p_img, plr->p_text[up_r][frame / fpause], 0, 0);
+	if (dir_x == 1 && dir_y == 1)
+		mlx_draw_texture(plr->p_img, plr->p_text[down_r][frame / fpause], 0, 0);
+	if (dir_x == -1 && dir_y == -1)
+		mlx_draw_texture(plr->p_img, plr->p_text[up_l][frame / fpause], 0, 0);
+	if (dir_x == -1 && dir_y == 1)
+		mlx_draw_texture(plr->p_img, plr->p_text[down_l][frame / fpause], 0, 0);
+	frame++;
+	if (frame >= fpause * 4)
+		frame = 0;
 }

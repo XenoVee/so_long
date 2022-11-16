@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 18:04:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/14 17:28:16 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/16 19:58:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,13 @@
 
 # include "../so_long.h"
 # include "t_player.h"
+# include "t_world.h"
 
 enum e_xy
 {
 	x = 0,
 	y,
 };
-
-// enum e_vertical
-// {
-// 	up = 1,
-// 	down = -1,
-// };
-
-// enum e_horizontal
-// {
-// 	left = -1,
-// 	down = +1,
-// };
 
 typedef struct s_map
 {
@@ -45,42 +34,6 @@ typedef struct s_map
 	int		**collect;
 }				t_map;
 
-enum e_sides
-{
-	north = 0,
-	east,
-	south,
-	west,
-	total,
-};
-
-enum e_wall_sprites
-{
-	center = 0,
-	pillar,
-	corner_1,
-	corner_2,
-	corner_3,
-	corner_4,
-	end_up,
-	end_left,
-	end_down,
-	end_right,
-	horizontal,
-	vertical,
-	t_up,
-	t_left,
-	t_down,
-	t_right,
-};
-
-typedef struct s_world
-{
-	mlx_image_t		*w_img;
-	mlx_texture_t	*w_text[16];
-	mlx_texture_t	*g_text[5];
-}				t_world;
-
 typedef struct s_exit
 {
 	mlx_image_t		*e_img;
@@ -91,6 +44,7 @@ typedef struct s_collect
 {
 	mlx_image_t		*c_img;
 	mlx_texture_t	*c_text;
+	int				**inst;
 }				t_collect;
 
 typedef struct s_game
@@ -102,7 +56,7 @@ typedef struct s_game
 	t_player	plr;
 	t_map		*map;
 	t_exit		exit;
-	t_collect	collect;
+	t_collect	coll;
 }				t_game;
 
 #endif

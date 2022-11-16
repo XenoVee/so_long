@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 14:04:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/14 14:34:19 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/16 20:16:31 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ typedef struct s_err
 # define ERR_SIDES			"Map sides must be at least 4 spaces long"
 # define ERR_CREATE_MAP		"Failed to create map"
 # define ERR_READ_RAND		"Failed to read /dev/random"
+# define ERR_MALLOC			"Malloc call returned NULL"
 #endif
