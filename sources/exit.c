@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   so_long.c                                          :+:    :+:            */
+/*   exit.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/17 15:15:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 14:33:12 by rmaes         ########   odam.nl         */
+/*   Created: 2022/11/29 14:31:06 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/11/29 14:31:43 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include <stdlib.h>
 
-int	main(int argc, char **argv)
+void	create_exit(t_game *game)
 {
-	t_map	map;
-
-	errno = 0;
-	if (argc != 2)
-		error(ERR_FILE);
-	else if (check_ext(argv[1]) || ft_strlen(argv[1]) < 4)
-		error(ERR_FILE_EXT);
-	open_file(argv[1], &map);
-	parsing(&map);
-	window(&map);
-	exit(EXIT_SUCCESS);
+	game->exit.e_text = mlx_load_png
+		("textures/exit.png");
+	game->exit.e_img = mlx_texture_to_image(game->mlx, game->exit.e_text);
+	mlx_image_to_window(game->mlx, game->exit.e_img,
+		game->map->exit[1] * game->hi, game->map->exit[0] * game->wi);
+	game->exit.active = false;
 }

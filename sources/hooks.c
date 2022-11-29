@@ -6,26 +6,11 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 20:55:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/16 21:24:45 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/28 18:26:10 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	collect_check(void *g)
-{
-	t_game		*game;
-
-	game = (t_game *)g;
-	if (collision_north(game, 0, 'C'))
-		ft_printf("collectipog");
-	if (collision_east(game, 0, 'C'))
-		ft_printf("collectipog");
-	if (collision_south(game, 0, 'C'))
-		ft_printf("collectipog");
-	if (collision_west(game, 0, 'C'))
-		ft_printf("collectipog");
-}
 
 void	move_hook(void *g)
 {

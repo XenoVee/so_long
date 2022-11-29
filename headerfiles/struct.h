@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 18:04:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/16 19:58:05 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/28 18:18:31 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_exit
 {
 	mlx_image_t		*e_img;
 	mlx_texture_t	*e_text;
+	bool			active;
 }				t_exit;
 
 typedef struct s_collect

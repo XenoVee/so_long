@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/11/16 21:26:28 by rmaes         ########   odam.nl          #
+#    Updated: 2022/11/29 14:33:42 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ FILES =			check.c \
 				parsing.c \
 				utils.c \
 				solve_check.c \
-				images.c \
+				window.c \
 				hooks.c \
 				player_move.c \
 				collectibles.c \
 				world.c \
+				exit.c \
 				put_wall.c \
 				player.c \
 				collision.c \

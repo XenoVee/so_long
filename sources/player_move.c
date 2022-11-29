@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 21:41:00 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/16 21:23:27 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/29 14:08:51 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void	player_moveup(t_game *game, int s)
 {
 	while (s > 0)
 	{
+		if (collision_north(game, 0, 'C'))
+			found_collectible(game);
+		if (collision_north(game, 5, 'E') && game->exit.active == true)
+			mlx_close_window(game->mlx);
 		if (collision_north(game, -1, '1'))
 		{
 			game->plr.speed_y = 0;
@@ -30,6 +34,10 @@ void	player_moveleft(t_game *game, int s)
 {
 	while (s > 0)
 	{
+		if (collision_west(game, 0, 'C'))
+			found_collectible(game);
+		if (collision_west(game, 5, 'E') && game->exit.active == true)
+			mlx_close_window(game->mlx);
 		if (collision_west(game, -1, '1'))
 		{
 			game->plr.speed_x = 0;
@@ -44,7 +52,11 @@ void	player_movedown(t_game *game, int s)
 {
 	while (s > 0)
 	{
-		if (collision_south(game, 1, '1'))
+		if (collision_south(game, 0, 'C'))
+			found_collectible(game);
+		if (collision_south(game, -5, 'E') && game->exit.active == true)
+			mlx_close_window(game->mlx);
+		if (collision_south(game, 0, '1'))
 		{
 			game->plr.speed_y = 0;
 			return ;
@@ -58,7 +70,11 @@ void	player_moveright(t_game *game, int s)
 {
 	while (s > 0)
 	{
-		if (collision_east(game, 1, '1'))
+		if (collision_east(game, 0, 'C'))
+			found_collectible(game);
+		if (collision_east(game, -5, 'E') && game->exit.active == true)
+			mlx_close_window(game->mlx);
+		if (collision_east(game, 0, '1'))
 		{
 			game->plr.speed_x = 0;
 			return ;
