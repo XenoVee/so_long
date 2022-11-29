@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 19:15:02 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/10/26 19:00:41 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/29 18:35:17 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	copy_map(t_map *dst, t_map *src)
 	dst->map = ft_calloc(sizeof(char *), src->x + 1);
 	while (src->map[ix])
 	{
-		dst->map[ix] = ft_calloc(sizeof(char), src->y);
+		dst->map[ix] = ft_calloc(sizeof(char), src->y + 1);
 		while (src->map[ix][iy])
 		{
 			dst->map[ix][iy] = src->map[ix][iy];
