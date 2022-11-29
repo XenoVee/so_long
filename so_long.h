@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 14:33:00 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/29 17:27:50 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	create_exit(t_game *game);
 void	window(t_map *map);
 void	exit_hook(void *g);
 void	move_hook(void *g);
+void	anim_exit_hook(void *g);
 int		collision_north(t_game *game, int offsetm, char c);
 int		collision_east(t_game *game, int offsetm, char c);
 int		collision_south(t_game *game, int offsetm, char c);
@@ -50,9 +51,11 @@ void	shift_buf(char *buf);
 void	put_wall(t_game *game, int x, int y);
 void	atlas_player(t_game *game, int dir, int sprite);
 void	create_player(t_game *game);
-void	write_moves(t_game *game);
+int		write_moves(t_game *game, bool ret);
+void	write_score(t_game *game);
 void	player_anim(t_player *plr, mlx_t *mlx, int dir_x, int dir_y);
 void	movement_input(t_game *game);
 void	found_collectible(t_game *game);
+void	activate_exit(t_game *game);
 
 #endif

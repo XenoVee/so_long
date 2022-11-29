@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/03 15:57:03 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/29 18:06:39 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int argc, char **argv)
 	else
 		mapgen(argc, argv, &map);
 	parsing(&map);
-	images(&map);
+	window(&map);
 	exit(EXIT_SUCCESS);
 }

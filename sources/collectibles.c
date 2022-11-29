@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/03 21:00:30 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 14:25:20 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/29 17:55:18 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 void	collected(t_game *game, int x, int y, int i)
 {
-	game->map->map[x][y] = '0';
-	game->coll.c_img->instances[i].enabled = false;
-	game->map->ncollect--;
-	if (game->map->ncollect <= 0)
-		game->exit.active = true;
+	if (game->map->map[x][y] == 'C')
+	{
+		game->map->map[x][y] = '0';
+		game->coll.c_img->instances[i].enabled = false;
+		write_score(game);
+		game->map->ncollect--;
+		if (game->map->ncollect <= 0)
+			activate_exit(game);
+	}
 }
 
 void	found_collectible(t_game *game)
 {
-	int	x[2];
-	int	y[2];
+	int	x[3];
+	int	y[3];
 	int	i;
 
 	x[0] = *game->plr.x / game->wi;
@@ -34,15 +38,10 @@ void	found_collectible(t_game *game)
 	i = 0;
 	while (game->coll.inst[i])
 	{
-		if (x[0] <= game->coll.inst[i][1] && x[1] >= game->coll.inst[i][1])
-		{
-			if (y[0] <= game->coll.inst[i][2] && y[1] >= game->coll.inst[i][2])
-			{
-				collected(game, game->coll.inst[i][2],
-					game->coll.inst[i][1], i);
-				return ;
-			}
-		}
+		x[2] = game->coll.inst[i][1];
+		y[2] = game->coll.inst[i][2];
+		if (x[0] <= x[2] && x[1] >= x[2] && y[0] <= y[2] && y[1] >= y[2])
+			collected(game, game->coll.inst[i][2], game->coll.inst[i][1], i);
 		i++;
 	}
 }

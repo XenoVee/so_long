@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 21:41:00 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 14:08:51 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/29 17:31:37 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	player_moveup(t_game *game, int s)
 	{
 		if (collision_north(game, 0, 'C'))
 			found_collectible(game);
-		if (collision_north(game, 5, 'E') && game->exit.active == true)
+		if (collision_north(game, 0, 'E') && game->exit.active == true)
 			mlx_close_window(game->mlx);
 		if (collision_north(game, -1, '1'))
 		{
@@ -36,7 +36,7 @@ void	player_moveleft(t_game *game, int s)
 	{
 		if (collision_west(game, 0, 'C'))
 			found_collectible(game);
-		if (collision_west(game, 5, 'E') && game->exit.active == true)
+		if (collision_west(game, 0, 'E') && game->exit.active == true)
 			mlx_close_window(game->mlx);
 		if (collision_west(game, -1, '1'))
 		{
@@ -54,7 +54,7 @@ void	player_movedown(t_game *game, int s)
 	{
 		if (collision_south(game, 0, 'C'))
 			found_collectible(game);
-		if (collision_south(game, -5, 'E') && game->exit.active == true)
+		if (collision_south(game, 0, 'E') && game->exit.active == true)
 			mlx_close_window(game->mlx);
 		if (collision_south(game, 0, '1'))
 		{
@@ -72,7 +72,7 @@ void	player_moveright(t_game *game, int s)
 	{
 		if (collision_east(game, 0, 'C'))
 			found_collectible(game);
-		if (collision_east(game, -5, 'E') && game->exit.active == true)
+		if (collision_east(game, 0, 'E') && game->exit.active == true)
 			mlx_close_window(game->mlx);
 		if (collision_east(game, 0, '1'))
 		{

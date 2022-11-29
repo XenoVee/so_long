@@ -6,11 +6,27 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 20:55:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/28 18:26:10 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/29 17:58:24 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	anim_exit_hook(void *g)
+{
+	t_game		*game;
+	static int	frame = 0;
+
+	game = (t_game *)g;
+	if (game->exit.active == true)
+	{
+		mlx_draw_texture(game->exit.e_img,
+			game->exit.op_text[frame / 5], 0, 0);
+		frame++;
+		if (frame / 5 > 4)
+			frame = 0;
+	}
+}
 
 void	move_hook(void *g)
 {
@@ -26,7 +42,7 @@ void	move_hook(void *g)
 		player_moveright(game, game->plr.speed_x);
 	if (game->plr.speed_y > 0)
 		player_movedown(game, game->plr.speed_y);
-	write_moves(game);
+	write_moves(game, false);
 	player_anim(&game->plr, game->mlx, ft_sign(game->plr.speed_x),
 		ft_sign(game->plr.speed_y));
 }
