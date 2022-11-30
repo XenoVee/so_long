@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 19:15:02 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 18:35:17 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/30 14:18:07 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,21 @@ void	solve_check(t_map *map, t_err *err)
 {
 	t_map	tempmap;
 	t_err	found;
+	int		ix;
+	int		iy;
 
 	found.exits = 0;
 	found.collect = 0;
 	copy_map(&tempmap, map);
 	solve(&tempmap, tempmap.player[0], tempmap.player[1], &found);
 	solved_errors(&found, err, &tempmap);
+	ix = 0;
+	iy = 0;
+	while (tempmap.map[ix])
+	{
+		free(tempmap.map[ix]);
+		ix++;
+	}
+	free(tempmap.map[ix]);
+	free (tempmap.map);
 }

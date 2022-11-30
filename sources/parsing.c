@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 21:41:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/09 15:03:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/30 14:21:55 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,5 @@ void	parsing(t_map *map)
 	check_map(map, &err);
 	error_list(&err);
 	solve_check(map, &err);
+	free (err.list);
 }

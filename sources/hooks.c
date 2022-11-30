@@ -6,11 +6,12 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 20:55:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 17:58:24 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/30 14:49:00 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+#include "stdlib.h"
 
 void	anim_exit_hook(void *g)
 {

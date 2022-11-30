@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:15:44 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 17:27:50 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/30 16:33:21 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	player_anim(t_player *plr, mlx_t *mlx, int dir_x, int dir_y);
 void	movement_input(t_game *game);
 void	found_collectible(t_game *game);
 void	activate_exit(t_game *game);
+void	free_things(t_game *game);
 
 #endif

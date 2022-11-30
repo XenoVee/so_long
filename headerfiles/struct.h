@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 18:04:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/29 16:41:22 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/30 17:00:29 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_map
 	int		player[2];
 	int		exit[2];
 	int		ncollect;
-	int		**collect;
 }				t_map;
 
 typedef struct s_exit

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 18:27:31 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/16 21:32:24 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/30 14:41:51 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,26 @@ void	load_player_textures(t_player *plr)
 	int		dir;
 	int		frame;
 	char	*file;
+	char	*itoa[2];
 
-	dir = 0;
-	frame = 0;
+	dir = -1;
 	file = ft_calloc(25, sizeof(char));
 	file[24] = '\0';
 	ft_memcpy(file, "textures/char/char", 18);
 	ft_memcpy(&file[20], ".png", 4);
-	while (dir < 8)
+	while (dir++ < 7)
 	{
-		frame = 0;
-		while (frame < 4)
+		frame = -1;
+		while (frame++ < 3)
 		{
-			ft_memcpy(&file[18], ft_itoa(dir), 1);
-			ft_memcpy(&file[19], ft_itoa(frame), 1);
+			itoa[0] = ft_itoa(dir);
+			itoa[1] = ft_itoa(frame);
+			ft_memcpy(&file[18], itoa[0], 1);
+			ft_memcpy(&file[19], itoa[1], 1);
 			plr->p_text[dir][frame] = mlx_load_png(file);
-			frame++;
+			free (itoa[0]);
+			free (itoa[1]);
 		}
-		dir++;
 	}
 	free(file);
 }
