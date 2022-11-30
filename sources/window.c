@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 15:12:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/30 17:09:59 by rmaes         ########   odam.nl         */
+/*   Updated: 2022/11/30 17:14:22 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,4 @@ void	window(t_map *map)
 	mlx_loop(game.mlx);
 	free_things(&game);
 	mlx_terminate(game.mlx);
-	system("leaks -q 'so_long'");
 }
