@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/08/01 13:10:16 by rmaes         #+#    #+#                  #
-#    Updated: 2022/11/29 14:33:42 by rmaes         ########   odam.nl          #
+#    Updated: 2022/11/30 14:00:06 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 LIBFT = ./libftprintf
 LIBFT_NAME = libftprintf/libft.a
+MLX = ./MLX42
 MLX_NAME = MLX42/libmlx42.a
 MLX_FLAGS = -I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 NAME = so_long
@@ -72,6 +73,10 @@ all: $(NAME)
 $(LIBFT_NAME):
 	@echo 'Making libft'
 	@make -C $(LIBFT)
+
+$(MLX_NAME):
+	@echo 'Making MLX'
+	@make -C $(MLX)
 
 $(TEST): $(SOURCES) $(LIBFT_NAME) $(MLX_NAME) $(SOURCE_MAIN)
 	@$(CC) $(CFLAGS) $(MLX_FLAGS) -g -fsanitize=address -o $@ $^
@@ -89,10 +94,6 @@ clean:
 	@echo "removing so_long"
 	@rm -f $(NAME) $(TEST) $(BONUS)
 
-fclean: clean
-	@echo "removing libft.a"
-	@make fclean -C $(LIBFT)
-
-re: fclean all
+re: clean all
 
 .PHONY: all clean fclean re test
